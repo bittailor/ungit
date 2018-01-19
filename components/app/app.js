@@ -14,6 +14,7 @@ var AppViewModel = function(appContainer, server) {
   this.server = server;
   if (window.location.search.indexOf('noheader=true') < 0)
     this.header = components.create('header', { app: this });
+  this.refreshButton = components.create('refreshbutton');
   this.dialog = ko.observable(null);
 
   this.repoList = ko.observableArray(JSON.parse(localStorage.getItem('repositories') || localStorage.getItem('visitedRepositories') || '[]')); // visitedRepositories is legacy, remove in the next version

@@ -1,5 +1,6 @@
 
-<!-- ko component: header --><!-- /ko -->
+<!-- k-o component: header --><!-- /k-o -->
+<!-- ko component: refreshButton --><!-- /ko -->
 <div class="app-top-margin"></div>
 <div class="app-wrapper">
 
@@ -9,6 +10,7 @@
     <button type="button" class="close" data-bind="click: dismissGitVersionError">&times;</button>
   </div>
 
+  <!--
   <div class="alert alert-info" data-bind="visible: showNewVersionAvailable">
     A new version of ungit (<span data-bind="text: latestVersion"></span>) is
     <a href="https://github.com/FredrikNoren/ungit">available</a>! Run
@@ -17,6 +19,7 @@
     <a href="https://github.com/FredrikNoren/ungit/blob/master/CHANGELOG.md">changelog</a>.
     <button type="button" class="close" data-bind="click: dismissNewVersion">&times;</button>
   </div>
+  
 
   <div class="alert alert-info clearfix" data-bind="visible: showBugtrackingNagscreen">
     <button type="button" class="close" data-bind="click: dismissBugtrackingNagscreen">&times;</button>
@@ -26,6 +29,7 @@
     <button class="btn btn-primary" data-bind="click: enableBugtracking">Enable automatic bug reports</button>
     <button class="btn btn-default" data-bind="click: dismissBugtrackingNagscreen">Naah, I&#39;ll skip that</button>
   </div>
+  -->
 
   <div class="alert alert-info clearfix" data-bind="visible: showNPSSurvey">
     <button type="button" class="close" data-bind="click: dismissNPSSurvey">&times;</button>

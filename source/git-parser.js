@@ -16,6 +16,7 @@ exports.parseGitStatus = (text, args) => {
     files[finalFilename] = {
       displayName: filename,
       staged: status[0] == 'A' || status[0] == 'M',
+      modified: status[1] == 'M',
       removed: status[0] == 'D' || status[1] == 'D',
       isNew: (status[0] == '?' || status[0] == 'A') && !(status[0] == 'D' || status[1] == 'D'),
       conflict: (status[0] == 'A' && status[1] == 'A') || status[0] == 'U' || status[1] == 'U',

@@ -49,7 +49,7 @@ var Type = function () {
     console.log('Config "diffType" must be either "textdiff" or "sidebysidediff".');
   }
 
-  this.value = ko.observable(ungit.config.diffType || textDiff);
+  this.value = ko.observable(ungit.config.diffType || sideBySideDiff);
   this.value.subscribe(function (value) {
     self.text(value === textDiff ? "Default" : "Side By Side");
     programEvents.dispatch({ event: 'invalidate-diff-and-render' });

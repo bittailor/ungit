@@ -162,6 +162,7 @@ StagingViewModel.prototype.refreshContent = function() {
       })]);
 }
 StagingViewModel.prototype.loadStatus = function(status) {
+  console.warn("status.files => git",status.files);
   this.setFiles(status.files);
   this.inRebase(!!status.inRebase);
   this.inMerge(!!status.inMerge);
@@ -289,6 +290,8 @@ var FileViewModel = function(staging, name) {
   this.editState = ko.observable('staged'); // staged, patched and none
   this.name = ko.observable(name);
   this.displayName = ko.observable(name);
+  this.isStaged = ko.observable(false);
+  this.isModified = ko.observable(false);
   this.isNew = ko.observable(false);
   this.removed = ko.observable(false);
   this.conflict = ko.observable(false);
@@ -334,6 +337,8 @@ FileViewModel.prototype.getSpecificDiff = function() {
 }
 FileViewModel.prototype.setState = function(state) {
   this.displayName(state.displayName);
+  this.isStaged(state.staged);
+  this.isModified(state.modified);
   this.isNew(state.isNew);
   this.removed(state.removed);
   this.conflict(state.conflict);
