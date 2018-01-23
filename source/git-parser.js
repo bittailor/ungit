@@ -21,6 +21,8 @@ exports.parseGitStatus = (text, args) => {
       isNew: (status[0] == '?' || status[0] == 'A') && !(status[0] == 'D' || status[1] == 'D'),
       conflict: (status[0] == 'A' && status[1] == 'A') || status[0] == 'U' || status[1] == 'U',
       renamed: status[0] == 'R',
+      colOne: status[0],
+      colTwo: status[1],
       type: fileType(finalFilename)
     };
   });

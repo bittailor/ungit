@@ -292,6 +292,8 @@ var FileViewModel = function(staging, name) {
   this.displayName = ko.observable(name);
   this.isStaged = ko.observable(false);
   this.isModified = ko.observable(false);
+  this.colOne = ko.observable(' ');
+  this.colTwo = ko.observable(' ');
   this.isNew = ko.observable(false);
   this.removed = ko.observable(false);
   this.conflict = ko.observable(false);
@@ -339,6 +341,8 @@ FileViewModel.prototype.setState = function(state) {
   this.displayName(state.displayName);
   this.isStaged(state.staged);
   this.isModified(state.modified);
+  this.colOne(state.colOne);
+  this.colTwo(state.colTwo);
   this.isNew(state.isNew);
   this.removed(state.removed);
   this.conflict(state.conflict);

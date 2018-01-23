@@ -5,16 +5,20 @@
       <div class="arrow"></div>
     </div>
     <div data-bind="visible: showNux" class="nux">
-      Nothing to commit. <a class="amend-link" href="#" data-bind="click: toggleAmend, visible: canAmend">Amend previous commit?</a>
+      Nothing to commit.
     </div>
     <div class="row" data-bind="visible: !showNux()">
       <div class="col-lg-12 file-area">
         <div class="files" data-bind="foreach: files">
           <div class="file" data-bind="css: { showingDiffs: isShowingDiffs }">
-            <span class="transparent" data-bind="css: {staged : isStaged}">M</span>
-            <span class="transparent" data-bind="css: {modified : isModified}">M</span>
+            
+            <!-- <span class="transparent" data-bind="css: {staged : isStaged}">M</span>
+            <span class="transparent" data-bind="css: {modified : isModified}">M</span> -->
+            <span class="status-col staged"  data-bind="text: colOne"></span>
+            <span class="status-col modified"  data-bind="text: colTwo"></span>
+
             <button class="name btn btn-default" data-bind="click: toggleDiffs">
-            <span data-bind="text: displayName"></span>
+              <span data-bind="text: displayName"></span>
             </button>
             <span class="new" data-bind="visible: isNew">New</span>
             <span class="deleted" data-bind="visible: removed">Removed</span>
