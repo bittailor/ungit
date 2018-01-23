@@ -15,6 +15,14 @@ var AppViewModel = function(appContainer, server) {
   if (window.location.search.indexOf('noheader=true') < 0)
     this.header = components.create('header', { app: this });
   this.refreshButton = components.create('refreshbutton');
+  this.counter = ko.observable(1);
+  self = this;
+  var timer = setInterval(function() {
+    programEvents.dispatch({ event: 'request-app-content-refresh' }); 
+    self.counter(self.counter()+1);  
+  }, 1000);
+
+
   this.dialog = ko.observable(null);
 
   this.repoList = ko.observableArray(JSON.parse(localStorage.getItem('repositories') || localStorage.getItem('visitedRepositories') || '[]')); // visitedRepositories is legacy, remove in the next version
@@ -51,7 +59,6 @@ var AppViewModel = function(appContainer, server) {
     });
     self.dismissNPSSurvey();
   }
-
 }
 
 AppViewModel.prototype.updateNode = function(parentElement) {
