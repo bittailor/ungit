@@ -20,7 +20,7 @@ var AppViewModel = function(appContainer, server) {
   var timer = setInterval(function() {
     programEvents.dispatch({ event: 'request-app-content-refresh' }); 
     self.counter(self.counter()+1);  
-  }, 1000);
+  }, 3000);
 
 
   this.dialog = ko.observable(null);

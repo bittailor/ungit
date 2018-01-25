@@ -9,14 +9,31 @@
     </div>
     <div class="row" data-bind="visible: !showNux()">
       <div class="col-lg-12 file-area">
-        <div class="files" data-bind="foreach: files">
+        <b>Staged:</b>
+      </div>
+      <div class="col-lg-12 file-area">
+          <div class="files" data-bind="foreach: stagedFiles">
+            <div class="file" data-bind="css: { showingDiffs: isShowingDiffs }">
+              <button class="name btn btn-default" data-bind="click: toggleDiffs">
+                <span data-bind="text: displayName"></span>
+              </button>
+              <span class="new" data-bind="visible: isNew">New</span>
+              <span class="deleted" data-bind="visible: removed">Removed</span>
+              <span class="additions" data-bind="text: additions"></span>
+              <span class="deletions" data-bind="text: deletions"></span>
+              <span class="conflict" data-bind="visible: conflict"><span class="temporary">Conflicts</span><span class="launchmergetool explanation" data-bind="visible: mergeTool, click: launchMergeTool">Launch Merge Tool</span><span class="markresolved explanation" data-bind="click: resolveConflict">Mark as Resolved</span></span>
+              <!-- ko if: isShowingDiffs -->
+              <div class="diffContainer" data-bind="component: diff"></div>
+              <!-- /ko -->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 file-area">
+            <b>Modified:</b>
+        </div>
+      <div class="col-lg-12 file-area">
+        <div class="files" data-bind="foreach: modifiedFiles">
           <div class="file" data-bind="css: { showingDiffs: isShowingDiffs }">
-            
-            <!-- <span class="transparent" data-bind="css: {staged : isStaged}">M</span>
-            <span class="transparent" data-bind="css: {modified : isModified}">M</span> -->
-            <span class="status-col staged"  data-bind="text: colOne"></span>
-            <span class="status-col modified"  data-bind="text: colTwo"></span>
-
             <button class="name btn btn-default" data-bind="click: toggleDiffs">
               <span data-bind="text: displayName"></span>
             </button>

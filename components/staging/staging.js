@@ -20,6 +20,18 @@ var StagingViewModel = function(server, repoPath) {
   this.repoPath = repoPath;
   this.filesByPath = {};
   this.files = ko.observableArray();
+  this.stagedFiles = ko.computed(function () {
+    return ko.utils.arrayFilter(self.files(), function(file) {
+      return file.isStaged() === true;
+    });
+  }, self);
+  this.modifiedFiles = ko.computed(function () {
+    return ko.utils.arrayFilter(self.files(), function(file) {
+      return file.colTwo() !== ' ';
+    });
+  }, self);
+
+
   this.commitMessageTitleCount = ko.observable(0);
   this.commitMessageTitle = ko.observable();
   this.commitMessageTitle.subscribe(function(value) {
